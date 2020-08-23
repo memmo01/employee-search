@@ -36,6 +36,10 @@
   Once application is installed, go to localhost:3000 and then you will see a list of 'employees' populated. Type a name or email in the search bar to find that person.
   
   ## Images
+  ### Landing Page gif
+  ![](./application-images/employee-search.gif)
+  ### Mobile Landing Page
+  <img src="https://github.com/memmo01/employee-search/blob/master/application-images/mobile_landing.JPG" height="400">
   
   ## Author
   

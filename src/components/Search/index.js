@@ -2,10 +2,9 @@ import React from "react"
 import "./style.css"
 
 function Search(props) {
-    console.log(props)
     return (
         <form>
-            <label htmlFor="search">Find Employee</label><br />
+            <label htmlFor="search" >Find Employee</label><br />
             <input type="text" name="search" id="search" required onChange={props.handleChange} />
 
             <fieldset>

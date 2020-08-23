@@ -59,14 +59,18 @@ class MainComponent extends React.Component {
     render() {
         return (
             <div>
-                <Header />
 
                 <main className="row">
-                    <aside className="col-3">
+
+                    <aside className="col-lg-3 d-lg-block d-none">
                         <Search handleChange={this.handleInputChange} handleRadio={this.handleRadio} nameCheck={this.state.name} emailCheck={this.state.email} />
                     </aside>
-                    <section className="col-8">
+                    <section className="col-lg-8">
+                        <Header />
                         <div className="row">
+                            <div className="col-12 d-lg-none d-block">
+                                <Search handleChange={this.handleInputChange} handleRadio={this.handleRadio} nameCheck={this.state.name} emailCheck={this.state.email} />
+                            </div>
                             {this.state.employeesMatch.map(item => {
                                 return <Card name={item} key={item.login.uuid} />
                             })}

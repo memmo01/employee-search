@@ -2,9 +2,9 @@ import React from "react"
 
 function Card(props) {
     return (
-        <div className="col-3">
+        <div className="col-6 col-lg-3 col-sm-4 ">
             <div className="card" style={{ marginBottom: "10px", minHeight: "400px" }}>
-                <img src={props.name.picture.large} className="card-img-top" alt="..." />
+                < img src={props.name.picture.large} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{props.name.name.first}{props.name.name.last}</h5>
                     <p className="card-text">
@@ -15,7 +15,7 @@ function Card(props) {
                     </p>
 
                 </div>
-            </div>
+            </div >
         </div >
 
     )

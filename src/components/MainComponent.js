@@ -9,8 +9,12 @@ class MainComponent extends React.Component {
         results: [],
         employeesMatch: [],
         search: "",
-        category: ""
+        category: "name",
+        name: true,
+        email: false
+
     }
+
 
 
     componentDidMount = () => {
@@ -23,19 +27,32 @@ class MainComponent extends React.Component {
 
     }
 
-    handleChange = (e) => {
+    handleInputChange = (e) => {
         let value = e.target.value.toLowerCase()
-
         let employees = this.state.results.filter(item => {
+            let category;
             let firstName = item.name.first.toLowerCase()
             let lastName = item.name.last.toLowerCase()
-            let name = `${firstName} ${lastName}`
-            if (name.indexOf(value) !== -1) {
+            if (this.state.category === "name") {
+                category = `${firstName} ${lastName}`
+            } else if (this.state.category === "email") {
+
+                category = item.email
+            }
+            if (category.indexOf(value) !== -1) {
                 return item
             }
         })
         this.setState({
             employeesMatch: employees
+        })
+    }
+
+    handleRadio = (e) => {
+        this.setState({
+            category: e.target.value,
+            email: !this.state.email,
+            name: !this.state.name
         })
     }
 
@@ -45,13 +62,13 @@ class MainComponent extends React.Component {
                 <Header />
 
                 <main className="row">
-                    <aside className="col-4">
-                        <Search handleChange={this.handleChange} />
+                    <aside className="col-3">
+                        <Search handleChange={this.handleInputChange} handleRadio={this.handleRadio} nameCheck={this.state.name} emailCheck={this.state.email} />
                     </aside>
                     <section className="col-8">
                         <div className="row">
                             {this.state.employeesMatch.map(item => {
-                                return <Card name={item} />
+                                return <Card name={item} key={item.login.uuid} />
                             })}
                         </div>
                     </section>

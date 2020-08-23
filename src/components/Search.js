@@ -1,10 +1,10 @@
 import React from "react"
 
-function Search() {
+function Search(props) {
     return (
         <form>
             <label for="search">Search</label>
-            <input type="text" name="search" id="search" required />
+            <input type="text" name="search" id="search" required onChange={props.handleChange} />
             <p>Search by:</p>
 
             <input type="radio" name="searchtype" id="name" value="name" checked={true} />

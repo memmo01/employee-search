@@ -7,6 +7,8 @@
   This project was build using React.js and styled using Bootstrap. The application pulls information from a api which provides dummy account information about users which I represent as employees. These employees are displayed on the site and can be search by name or email. When typing in the search bar, the employees who match the name or email input will be the only ones showing on the page. Now the user who is trying to search for an employees information can find it with ease!
   
   
+      You can see the application in action at https://employee-list01.herokuapp.com/
+  
   ## Table of Contents
 
   * [Installation](#installation)

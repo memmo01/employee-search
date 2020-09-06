@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import Header from "../Header"
 import Search from "../Search"
 import Card from "../Card"
+import Sort from "../Sort"
 import API from "../../utils/API"
 import "./style.css"
 
@@ -10,6 +11,7 @@ function MainComponent() {
     const [employeesMatch, setEmployeesMatch] = useState([])
     const [name, setName] = useState(true)
     const [email, setEmail] = useState(false)
+    const [sortDirection, setSort] = useState("ascending")
     const [category, setCategory] = useState("name")
 
     //on load get employees
@@ -44,12 +46,32 @@ function MainComponent() {
     }
 
 
+    function sortEmployees() {
+
+        employeesMatch.sort(function (a, b) {
+
+            if (sortDirection === "ascending") {
+                return (a.name.first > b.name.first) ? 1 : -1;
+            }
+            else if (sortDirection === "desending") {
+                return (a.name.first < b.name.first) ? 1 : -1;
+            }
+        })
+        setEmployeesMatch(employeesMatch)
+
+    }
+
     //radio option for search by email or name
     function handleRadio(e) {
 
         setCategory(e.target.value)
         setEmail(!email)
         setName(!name)
+    }
+
+    function handleSortClick(sortType) {
+        setSort(sortType)
+        sortEmployees()
     }
 
 
@@ -59,6 +81,7 @@ function MainComponent() {
 
             <aside className="col-lg-3 d-lg-block d-none">
                 <Search handleChange={handleInputChange} handleRadio={handleRadio} nameCheck={name} emailCheck={email} />
+                <Sort handleSortClick={handleSortClick} />
             </aside>
             <section className="col-lg-8">
                 <Header />

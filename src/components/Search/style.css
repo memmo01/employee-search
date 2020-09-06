@@ -16,10 +16,9 @@ form{
 }
 
 @media screen and (min-width:992px){
-/* form{
-    position:relative;
-    top:100px;
-} */
+form{
+    margin-top:100px;
+}
 
 fieldset > legend{
     font-size:20px; 

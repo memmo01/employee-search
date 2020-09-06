@@ -11,7 +11,7 @@ function MainComponent() {
     const [employeesMatch, setEmployeesMatch] = useState([])
     const [name, setName] = useState(true)
     const [email, setEmail] = useState(false)
-    const [sortDirection, setSort] = useState("ascending")
+    const [sortDirection, setSort] = useState("")
     const [category, setCategory] = useState("name")
 
     //on load get employees
@@ -46,14 +46,14 @@ function MainComponent() {
     }
 
 
-    function sortEmployees() {
+    function sortEmployees(direction) {
 
         employeesMatch.sort(function (a, b) {
 
-            if (sortDirection === "ascending") {
+            if (direction === "desending") {
                 return (a.name.first > b.name.first) ? 1 : -1;
             }
-            else if (sortDirection === "desending") {
+            else if (direction === "ascending") {
                 return (a.name.first < b.name.first) ? 1 : -1;
             }
         })
@@ -70,8 +70,9 @@ function MainComponent() {
     }
 
     function handleSortClick(sortType) {
+        console.log(sortType)
         setSort(sortType)
-        sortEmployees()
+        sortEmployees(sortType)
     }
 
 
@@ -81,7 +82,7 @@ function MainComponent() {
 
             <aside className="col-lg-3 d-lg-block d-none">
                 <Search handleChange={handleInputChange} handleRadio={handleRadio} nameCheck={name} emailCheck={email} />
-                <Sort handleSortClick={handleSortClick} />
+                <Sort handleSortClick={handleSortClick} sortDirection={sortDirection} />
             </aside>
             <section className="col-lg-8">
                 <Header />
